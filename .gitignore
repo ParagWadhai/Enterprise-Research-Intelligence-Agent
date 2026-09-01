@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.env
+
+data/research.db
+data/vector_store/
+data/documents/
+
+.pytest_cache/
+.streamlit/
+pytest.ini
