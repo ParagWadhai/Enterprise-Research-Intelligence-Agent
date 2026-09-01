@@ -1,19 +1,21 @@
 from fastapi import FastAPI
 
-print("🚀 Enterprise Research Agent: main.py loaded")
+print("STEP 1: main.py started", flush=True)
 
 from app.api.research import router as research_router
+
+print("STEP 2: research router imported", flush=True)
 
 from app.database.database import (
     Base,
     engine,
 )
 
-# IMPORTANT:
-# Import models so SQLAlchemy knows about all tables
-# before create_all() runs.
+print("STEP 3: database imported", flush=True)
+
 from app.database import models
 
+print("STEP 4: models imported", flush=True)
 
 app = FastAPI(
     title="Enterprise Research Intelligence Agent",
@@ -31,13 +33,13 @@ app = FastAPI(
 @app.on_event("startup")
 def startup():
 
-    print("🗄️ Initializing database...")
+    print("STEP 5: startup event", flush=True)
 
     Base.metadata.create_all(
         bind=engine
     )
 
-    print("✅ Database initialized")
+    print("STEP 6: database initialized", flush=True)
 
 
 # ---------------------------------------------------------
