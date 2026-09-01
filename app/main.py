@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+print("🚀 Enterprise Research Agent: main.py loaded")
+
 from app.api.research import router as research_router
 
 from app.database.database import (
@@ -29,9 +31,13 @@ app = FastAPI(
 @app.on_event("startup")
 def startup():
 
+    print("🗄️ Initializing database...")
+
     Base.metadata.create_all(
         bind=engine
     )
+
+    print("✅ Database initialized")
 
 
 # ---------------------------------------------------------
